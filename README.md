@@ -23,7 +23,7 @@ Learned to build graphs using StateGraph class - add nodes, define edges with ad
 So we strted by understanding a simple graph: start → node 1 → (conditional) node 2 or 3 → end. Walked through defining state as a dictionary, creating three node functions that append text to graph_state, implementing decide_mood conditional edge with random logic, then assembling everything with StateGraph, adding nodes/edges, compiling, and visualizing. Ran the graph multiple times with invoke() starting from "Hi, this is Lance" and saw different outputs based on random routing.
 
 2. **Code Tweaks?** Changed the input name from "Lance" to "Sumedha" to personalize it. Added an extra cell to run the graph multiple times and see different random outcomes.
-Link: simple_graph.ipynb
+**Link:** simple_graph.ipynb
 
 ### LangGraph Studio
 
@@ -40,7 +40,7 @@ Also learned how to bind tools to models so they know when to call functions. Yo
 Understood reducer functions - by default LangGraph overwrites state values, but with messages we want to append to preserve conversation history. The add_messages reducer does this automatically. LangGraph has a built-in MessagesState class that includes this reducer. Explained using messages as graph state, the need for add_messages reducer to append instead of overwrite, and the built-in MessagesState. Built a simple chain graph with messages as state, a single node (tool-calling LLM), and tested it with both natural language (got text response) and math questions (got tool calls). Built a graph with tool-calling LLM node, tested with "hello" (got natural language) and math question (got tool call).
 
 2. **Code Tweaks?** Moved to Mistral AI, changed the tool test from "2 multiplied by 3" to "4 multiplied by 7" to use different numbers.
-Link: chain.ipynb
+**Link:** chain.ipynb
 
 
 ### Router
@@ -50,7 +50,14 @@ Learned about two key built-in LangGraph components: ToolNode (executes tool cal
 Tested with two inputs: multiply question routes to tools node and executes the function, while "Hello World" gets direct response without routing to tools. Also saw how to run the router in Studio - opened the router.py script, verified it in langgraph.json, ran it in Studio interface. Studio visualizes tool calls nicely with formatted arguments and shows different routing paths clearly. Can see how direct responses go straight to end versus tool calls that route through the tools node.
 
 2. **Code Tweaks?** Switched to Mistral AI (mistral-small-latest), changed the test question from "2 multiplied by 2" to "5 multiplied by 8", and added a friendly greeting test.
-Link: router.ipynb
+**Link:** router.ipynb
 
 
 ### Agent with ReAct Loop
+
+1. **What I learned?** Built a proper agent that can chain multiple tool calls together - it calls a tool, sees the result, decides if it needs another tool, and keeps going until done. Pretty cool how it handles complex math step by step. Learned the ReAct architecture (Reason + Act) which is a popular generic agent pattern with three components: Act (let model call tools), Observe (pass tool output back to model), and Reason (let model reason about tool output and decide next step). The key difference from a router: instead of ending after a tool call, the tool message loops back to the model, allowing sequential tool calls until the model decides the problem is solved.
+The modification from router to agent is simple - just add an edge from tools node back to the assistant node instead of going to end. This creates a loop that continues as long as the model makes tool calls (though in practice you'd add max iteration limits). Tested with a complex multi-step problem: add 3+4, multiply by 2, divide by 5. The agent made three sequential tool calls, reasoning between each: first got 7, then multiplied to get 14, then divided to get final answer 2.8.
+Also learned about LangSmith tracing - set environment variables (LANGSMITH_API_KEY, LANGCHAIN_PROJECT name), then viewed also detailed traces in the LangSmith browser interface at smith.langchain.com. we Can see every step: initial assistant invocation, system prompts, function calls with payloads, tool node executions, token usage, latency which was Very useful for debugging alongside LangGraph Studio.
+
+2. **Code Tweaks?** Switched to Mistral AI (mistral-small-latest model), changed system prompt to "solves math problems carefully, one step at a time", and tested with different numbers (6+9 then *3 then /5 instead of 3+4).
+**Link:** agent.ipynb (also agent.py in studio folder)
