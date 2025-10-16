@@ -224,3 +224,5 @@ share
 bin
 etc
 include
+
+.langgraph_api

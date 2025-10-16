@@ -41,3 +41,16 @@ Understood reducer functions - by default LangGraph overwrites state values, but
 
 2. **Code Tweaks?** Moved to Mistral AI, changed the tool test from "2 multiplied by 3" to "4 multiplied by 7" to use different numbers.
 Link: chain.ipynb
+
+
+### Router
+
+1. **What I learned?** Built a router that uses conditional edges to decide between calling a tool or responding directly. The model looks at the input and picks the right path - either runs the tool or just answers normally. This is a simple agent where the LLM directs control flow by choosing between two options based on input.
+Learned about two key built-in LangGraph components: ToolNode (executes tool calls - just pass it your function as a list) and tools_condition (a prebuilt conditional edge that checks if the LLM output is a tool call). If it's a tool call, routes to the tools node; otherwise routes to end. The graph flow: input → chat model (bound with tools) → conditional edge checks output → either routes to tool node (executes function, returns tool message) or routes to end (direct natural language response).
+Tested with two inputs: multiply question routes to tools node and executes the function, while "Hello World" gets direct response without routing to tools. Also saw how to run the router in Studio - opened the router.py script, verified it in langgraph.json, ran it in Studio interface. Studio visualizes tool calls nicely with formatted arguments and shows different routing paths clearly. Can see how direct responses go straight to end versus tool calls that route through the tools node.
+
+2. **Code Tweaks?** Switched to Mistral AI (mistral-small-latest), changed the test question from "2 multiplied by 2" to "5 multiplied by 8", and added a friendly greeting test.
+Link: router.ipynb
+
+
+### Agent with ReAct Loop
