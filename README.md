@@ -67,6 +67,15 @@ Also learned about LangSmith tracing - set environment variables (LANGSMITH_API_
 
 1. **What I learned?** Learned how agents can actually remember past interactions using LangGraph’s memory checkpointer. Normally, each graph run starts fresh, so if you say “multiply that by 2” after adding some numbers before, it forgets what “that” means. The checkpointer fixes this by saving the graph’s state after every step, things like inputs, outputs, and what comes next as little snapshots called checkpoints, all grouped under a thread ID.
 When we run the next query with the same thread ID, the agent picks up right where it left off it remembers the previous context (like knowing “7” came from 3+4). I also found it really cool that LangGraph Studio handles this automatically, using Postgres as its persistence layer, so you don’t even have to configure memory manually. Overall, it’s a simple but powerful way to make agents feel more aware and conversational.
-\
+
 2. **Code Tweaks?** Switched from OpenAI to Mistral AI, tweaked the system prompt to say "solving math problems step by step" instead of "performing arithmetic", and used different numbers (5+8 instead of 3+4) to test it out.
 Link: agent_memory.ipynb
+
+
+### Deployment with LangGraph Studio
+
+1. **What I learned?** Learned how to actually deploy the agents we’ve been building. Understood how LangGraph’s API, Studio, and SDK all connect together. The API basically bundles your Python graph code and adds features like persistence and task queues. Studio (which we’ve already been using) is built on top of this same API, and it can run either locally or through LangGraph Cloud.
+Also learned how deployment works using LangSmith we can connect our GitHub repo, deploy our graph, and instantly get a hosted URL with built-in monitoring, tracing, and documentation. The same graphs can be accessed through the SDK just by switching from the local Studio URL to the deployed cloud URL. Overall, it was a super clear walkthrough of how to move from local testing to a fully deployed, production-ready setup.
+
+2. **Code Tweaks?** All setup uses Mistral AI instead of OpenAI. Changed the test input from “Multiply 3 by 2” to “Multiply 5 by 4” to keep things consistent with earlier notebooks. Also updated the Studio config files to work smoothly with the Mistral API. 
+Link: deployment.ipynb
