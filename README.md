@@ -25,3 +25,18 @@ So we strted by understanding a simple graph: start → node 1 → (conditional)
 2. **Code Tweaks?** Changed the input name from "Lance" to "Sumedha" to personalize it. Added an extra cell to run the graph multiple times and see different random outcomes.
 Link: simple_graph.ipynb
 
+### LangGraph Studio
+
+1. **What I learned?** Learned how to work with LangGraph Studio and understand the project directory structure. Each module has its own folder with a studio directory inside. The studio folder contains: a requirements.txt file (for packages), Python scripts (defining the various graphs), and an .env file (for API keys). This entire directory can be loaded as a project in LangGraph Studio. Studio provides a visual interface to interact with and test the graphs we build - can see all graphs in the project and switch between them to play with different implementations.
+it alsp showed how Studio displays the graphs visually.
+
+2. **Code Tweaks?** Updated the whole `/studio` to use Mistral AI (free) instead of OpenAI.
+
+### Chain with Messages and Tools
+
+1. **What I learned?** Figured out how chat messages work as graph state and how the add_messages reducer keeps appending messages instead of overwriting them. Learned that chat models interact with messages - you can create a list of messages (with roles like AI/human and content) and pass them directly to a chat model to get an AI message response back with content and metadata. Started with messages basics - creating message lists with AI/human roles, passing to chat models, getting AI message responses with content and metadata.
+Also learned how to bind tools to models so they know when to call functions. You define a function (like multiply), use llm.bind_tools(), and the model can produce tool calls instead of text responses. The tool call output contains arguments and the function name needed to run the tool. Then introduced tools - binding functions to LLMs with bind_tools(), invoking with questions like "what is 2 multiplied by 3", getting tool call outputs with arguments and function names.
+Understood reducer functions - by default LangGraph overwrites state values, but with messages we want to append to preserve conversation history. The add_messages reducer does this automatically. LangGraph has a built-in MessagesState class that includes this reducer. Explained using messages as graph state, the need for add_messages reducer to append instead of overwrite, and the built-in MessagesState. Built a simple chain graph with messages as state, a single node (tool-calling LLM), and tested it with both natural language (got text response) and math questions (got tool calls). Built a graph with tool-calling LLM node, tested with "hello" (got natural language) and math question (got tool call).
+
+2. **Code Tweaks?** Moved to Mistral AI, changed the tool test from "2 multiplied by 3" to "4 multiplied by 7" to use different numbers.
+Link: chain.ipynb
