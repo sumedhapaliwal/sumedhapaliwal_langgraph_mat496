@@ -32,6 +32,7 @@ it alsp showed how Studio displays the graphs visually.
 
 2. **Code Tweaks?** Updated the whole `/studio` to use Mistral AI (free) instead of OpenAI.
 
+
 ### Chain with Messages and Tools
 
 1. **What I learned?** Figured out how chat messages work as graph state and how the add_messages reducer keeps appending messages instead of overwriting them. Learned that chat models interact with messages - you can create a list of messages (with roles like AI/human and content) and pass them directly to a chat model to get an AI message response back with content and metadata. Started with messages basics - creating message lists with AI/human roles, passing to chat models, getting AI message responses with content and metadata.
