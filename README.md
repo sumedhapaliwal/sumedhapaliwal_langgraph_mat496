@@ -105,6 +105,17 @@ File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgra
 Here, I learned that most graphs use a single schema for all their input and output keys, but sometimes we need more control. There are cases where internal nodes send info that’s not relevant to the final output like internal communication and that’s where private state helps. It’s useful when we want to keep some internal logic hidden from the user. I also learned that while the StateGraph uses one schema for all communication, we can define explicit input and output schemas along with an internal schema for more complex designs.
 
 **Changes I Made:**
+
 I created a currency converter graph where private schemas handle intermediate calculations. Another graph collects user event preferences and processes them internally, then outputs only a summary message to the user. Both graphs demonstrate how private and public schemas interact.
 
 File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/multiple-schemas.ipynb)
+
+
+### Video 4: Trim and Filter Messages
+In this video, I learned how to manage long conversations efficiently. When message threads get too long, they increase latency and token costs. To fix this, we can either delete older messages with `RemoveMessages`, or filter certain ones to pass only a subset to the model. Another trick is trimming, where we specify a token limit so only the latest relevant parts go to the LLM, making responses faster.
+
+**Changes I Made:**
+
+I built a customer feedback chatbot that keeps only the last three messages when interacting with users. Older messages are trimmed, ensuring the bot responds faster and uses fewer tokens while maintaining conversation continuity.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/trim-filter-messages.ipynb)
