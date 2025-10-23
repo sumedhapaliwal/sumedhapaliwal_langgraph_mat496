@@ -100,3 +100,11 @@ This video went deeper into reducers, which control how state updates happen for
 I tested built-in message reducers and created a custom score aggregator that sums quiz scores across nodes. This custom reducer ensures scores are combined correctly without errors, demonstrating practical use for state calculations across multiple nodes.
 
 File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/state-reducers.ipynb)
+
+### Video 3: Multiple Schemas
+Here, I learned that most graphs use a single schema for all their input and output keys, but sometimes we need more control. There are cases where internal nodes send info that’s not relevant to the final output like internal communication and that’s where private state helps. It’s useful when we want to keep some internal logic hidden from the user. I also learned that while the StateGraph uses one schema for all communication, we can define explicit input and output schemas along with an internal schema for more complex designs.
+
+**Changes I Made:**
+I created a currency converter graph where private schemas handle intermediate calculations. Another graph collects user event preferences and processes them internally, then outputs only a summary message to the user. Both graphs demonstrate how private and public schemas interact.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/multiple-schemas.ipynb)
