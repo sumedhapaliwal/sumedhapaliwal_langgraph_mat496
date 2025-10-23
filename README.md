@@ -124,7 +124,8 @@ File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgra
 ### Video 5: Chatbot with Summarizing Messages and Memory
 This one was about making a chatbot that summarizes old messages once their count goes beyond six. This helps reduce context size and improves speed. I also learned about using a checkpointer for memory it saves graph state after every step, so even if the chat is interrupted, the bot can continue from where it left off. This persistence makes long-term conversations smoother and more practical.
 
-Tweaks / Changes I Made:
+**Changes I Made:**
+
 I redesigned the chatbot as a virtual event assistant. After summarization, only the last two messages are retained, reducing LLM token usage. The bot maintains conversation flow while summarizing older interactions, and I tracked conversation threads in Langsmith to confirm persistence works.
 
 File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/chatbot-summarization.ipynb)
