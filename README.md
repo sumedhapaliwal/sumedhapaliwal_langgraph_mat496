@@ -86,6 +86,6 @@ Link: deployment.ipynb
 ### Video 1: State Schema
 In this video, I learned about Schema basically the structure and data types that our graph uses. So far, we were using TypedDict for this purpose. Then we were introduced to dataclass, which is quite similar but lets us access values using the “.” operator. One major issue with both dataclass and TypedDict is that type hints don’t get enforced at runtime, meaning we can still assign invalid values without getting an error. To fix this, Pydantic comes in really handy as it provides proper data validation. 
 
-**Tweaks / Changes I Made:**
+**Changes I Made:**
 
 I created a graph that tracks a user’s preferred subscription plan (monthly vs yearly). Using Pydantic, the graph validates inputs and rejects invalid selections, showing clearly how runtime validation works while updating the state.
