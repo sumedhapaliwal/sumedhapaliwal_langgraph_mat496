@@ -89,3 +89,14 @@ In this video, I learned about Schema basically the structure and data types tha
 **Changes I Made:**
 
 I created a graph that tracks a user’s preferred subscription plan (monthly vs yearly). Using Pydantic, the graph validates inputs and rejects invalid selections, showing clearly how runtime validation works while updating the state.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/state-schema.ipynb)
+
+### Video 2: State Reducers
+This video went deeper into reducers, which control how state updates happen for specific keys or channels. I learned that when two nodes try to update the same state at the same time, it throws a value error. To solve this, we can use state reducers, and Annotated helps in that. Sometimes we even need to make custom reducers for special cases like null. We also looked at message reducers, using the add_reducer method which helps us add, overwrite, or remove messages easily.
+
+**Changes I Made:**
+
+I tested built-in message reducers and created a custom score aggregator that sums quiz scores across nodes. This custom reducer ensures scores are combined correctly without errors, demonstrating practical use for state calculations across multiple nodes.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/state-reducers.ipynb)
