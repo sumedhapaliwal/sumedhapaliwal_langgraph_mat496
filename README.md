@@ -79,3 +79,13 @@ Also learned how deployment works using LangSmith we can connect our GitHub repo
 
 2. **Code Tweaks?** All setup uses Mistral AI instead of OpenAI. Changed the test input from “Multiply 3 by 2” to “Multiply 5 by 4” to keep things consistent with earlier notebooks. Also updated the Studio config files to work smoothly with the Mistral API. 
 Link: deployment.ipynb
+
+
+## Module 2
+
+### Video 1: State Schema
+In this video, I learned about Schema basically the structure and data types that our graph uses. So far, we were using TypedDict for this purpose. Then we were introduced to dataclass, which is quite similar but lets us access values using the “.” operator. One major issue with both dataclass and TypedDict is that type hints don’t get enforced at runtime, meaning we can still assign invalid values without getting an error. To fix this, Pydantic comes in really handy as it provides proper data validation. 
+
+**Tweaks / Changes I Made:**
+
+I created a graph that tracks a user’s preferred subscription plan (monthly vs yearly). Using Pydantic, the graph validates inputs and rejects invalid selections, showing clearly how runtime validation works while updating the state.
