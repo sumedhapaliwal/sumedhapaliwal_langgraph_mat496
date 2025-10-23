@@ -226,3 +226,7 @@ etc
 include
 
 .langgraph_api
+
+pyvenv.cfg
+Scripts
+.devcontainer
