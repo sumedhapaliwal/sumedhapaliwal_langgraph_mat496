@@ -128,3 +128,13 @@ Tweaks / Changes I Made:
 I redesigned the chatbot as a virtual event assistant. After summarization, only the last two messages are retained, reducing LLM token usage. The bot maintains conversation flow while summarizing older interactions, and I tracked conversation threads in Langsmith to confirm persistence works.
 
 File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/chatbot-summarization.ipynb)
+
+
+### Video 6: Chatbot with External Database Memory
+This video introduced persistent memory using external databases instead of temporary inmemory storage. I learned how to use SqliteSaver as a checkpointer, which writes conversation state to an actual database file on disk. This means the chatbot remembers everything even if you restart the notebook or reboot your computer, the conversation picks up exactly where you left off using the same thread ID.
+
+**Changes I Made:**
+
+Switched to Mistral AI and changed the example conversation to John Mayer topics (he's my fav). The chatbot now intelligently decides when conversations get too long and automatically summarizes them before continuing, creating a smooth flow for handling extended discussions with persistent memory.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/chatbot-external-memory.ipynb)
