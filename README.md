@@ -162,3 +162,11 @@ This lesson introduced how to pause, inspect, and modify the LangGraph’s state
 **Changes:** Built a John Mayer Career Analytics system where a music industry analyst can correct statistics mid-execution. Created tools for Grammy calculations (nominations + wins), collaboration counts across albums, and song catalog estimation. The flow pauses before the assistant node, allowing updates like changing "8 studio albums with 3 collaborations" to "9 albums with 4 collaborations" on the fly. Added a human_feedback node that intercepts queries (like correcting Grammy stats from estimate to actual: 19 nominations + 7 wins), applies the update using as_node="human_feedback", then continues with refined data.
 
 File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-3/edit-state-human-feedback.ipynb)
+
+
+### Video 4: Dynamic Breakpoints
+In this lesson, I learned about dynamic breakpoints, a more flexible form of interrupts that can trigger based on runtime conditions. By raising a NodeInterrupt inside a node, I could create real-time checks where the graph pauses automatically if a certain condition (like a driver alert) is met. After pausing, I updated the graph state and resumed execution. I also visualized the entire process in LangSmith Studio to understand how interrupts appear in execution traces.
+
+**Changes:** Built an album validation system for John Mayer's discography that dynamically interrupts when album names don't match his typical naming style. Created a three-step workflow (validate_album_format → check_album_length → process_album_data) where NodeInterrupt triggers if an album name exceeds 20 characters (since his actual albums like "Continuum", "Room for Squares", and "Battle Studies" are all concise). Tested with "The Complete John Mayer Guitar Collection" (42 chars) which raised the interrupt with a custom message explaining the issue, then updated state to "Continuum" to pass validation. This demonstrated conditional interrupts based on music industry naming conventions rather than fixed breakpoints.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-3/dynamic-breakpoints.ipynb)
