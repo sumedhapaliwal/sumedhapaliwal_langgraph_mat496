@@ -1,5 +1,5 @@
 from langchain_core.messages import SystemMessage
-from langchain_openai import ChatOpenAI
+from langchain_mistralai import ChatMistralAI
 
 from langgraph.graph import START, StateGraph, MessagesState
 from langgraph.prebuilt import tools_condition, ToolNode
@@ -34,11 +34,11 @@ def divide(a: int, b: int) -> float:
 tools = [add, multiply, divide]
 
 # Define LLM with bound tools
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatMistralAI(model="mistral-large-latest")
 llm_with_tools = llm.bind_tools(tools)
 
 # System message
-sys_msg = SystemMessage(content="You are a helpful assistant tasked with writing performing arithmetic on a set of inputs.")
+sys_msg = SystemMessage(content="You are a helpful assistant tasked with performing arithmetic on a set of inputs. You can calculate musical theory concepts, like chord progressions, time signatures, or frequency calculations for John Mayer's guitar work.")
 
 # Node
 def assistant(state: MessagesState):

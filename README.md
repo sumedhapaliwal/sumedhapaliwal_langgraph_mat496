@@ -139,3 +139,10 @@ This video introduced persistent memory using external databases instead of temp
 Switched to Mistral AI and changed the example conversation to John Mayer topics (he's my fav). The chatbot now intelligently decides when conversations get too long and automatically summarizes them before continuing, creating a smooth flow for handling extended discussions with persistent memory.
 
 File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-2/chatbot-external-memory.ipynb)
+
+
+## Module 3
+### Video 1: Streaming Responses with Interruption
+In this lesson, I explored how LangGraph handles streaming outputs in different modes to create a real-time conversational experience. I learned to use .stream() with stream_mode='values' for full state streaming after each node and stream_mode='updates' to receive only incremental updates. I also experimented with .astream_events() to listen for real-time token generation via events like on_chat_model_stream. Finally, I tested remote streaming using the LangGraph API’s client.runs.stream() with the messages mode, confirming how both local and remote streaming can be implemented effectively.
+
+**Changes:** Switched the entire implementation from OpenAI to Mistral AI (using mistral-large-latest model) and completely revamped all examples around John Mayer's music career. Instead of generic conversations, I created meaningful John Mayer-focused queries like discussing his guitar techniques, album evolution, live performances, collaborations, and gear setup. Each streaming method was tested with different aspects of his musical journey - from his signature playing style to his legendary guitar collection including vintage Stratocasters and PRS signatures. This created a cohesive theme while demonstrating how streaming works with both local graphs and the LangGraph API.
