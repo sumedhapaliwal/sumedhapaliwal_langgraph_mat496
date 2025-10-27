@@ -146,3 +146,9 @@ File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgra
 In this lesson, I explored how LangGraph handles streaming outputs in different modes to create a real-time conversational experience. I learned to use .stream() with stream_mode='values' for full state streaming after each node and stream_mode='updates' to receive only incremental updates. I also experimented with .astream_events() to listen for real-time token generation via events like on_chat_model_stream. Finally, I tested remote streaming using the LangGraph API’s client.runs.stream() with the messages mode, confirming how both local and remote streaming can be implemented effectively.
 
 **Changes:** Switched the entire implementation from OpenAI to Mistral AI (using mistral-large-latest model) and completely revamped all examples around John Mayer's music career. Instead of generic conversations, I created meaningful John Mayer-focused queries like discussing his guitar techniques, album evolution, live performances, collaborations, and gear setup. Each streaming method was tested with different aspects of his musical journey - from his signature playing style to his legendary guitar collection including vintage Stratocasters and PRS signatures. This created a cohesive theme while demonstrating how streaming works with both local graphs and the LangGraph API.
+
+File link: [click here](https://github.com/sumedhapaliwal/sumedhapaliwal_langgraph_mat496/blob/main/module-3/streaming-interruption.ipynb)
+
+### Video 2: Breakpoints
+Here, I learned how to include a human-in-the-loop mechanism in LangGraph applications. This approach allows execution to pause and wait for human intervention or validation before continuing. It’s especially useful when the AI might be uncertain or when a human’s judgment is needed to verify a condition. I saw how interrupts can be triggered to inject user input dynamically, improving accuracy and oversight in AI workflows.
+
